@@ -1,0 +1,113 @@
+/* Import de la police Fira Code - DOIT ÊTRE EN PREMIER */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+/* Ensuite les directives Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset et base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-light-bg dark:bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-500 dark:bg-matrix-green rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-600 dark:bg-neon-cyan;
+}
+
+/* Selection de texte */
+::selection {
+  @apply bg-blue-500 dark:bg-matrix-green text-white dark:text-dark-bg;
+}
+
+::-moz-selection {
+  @apply bg-blue-500 dark:bg-matrix-green text-white dark:text-dark-bg;
+}
+
+/* Classes utilitaires personnalisées */
+@layer components {
+  /* Bouton primaire */
+  .btn-primary {
+    @apply bg-blue-600 dark:bg-matrix-green 
+           text-white dark:text-dark-bg 
+           px-6 py-3 rounded-lg font-semibold 
+           hover:bg-blue-700 dark:hover:bg-neon-cyan 
+           transition-all duration-300 
+           hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-matrix-green/50;
+  }
+  
+  /* Bouton secondaire */
+  .btn-secondary {
+    @apply border-2 border-blue-600 dark:border-matrix-green 
+           text-blue-600 dark:text-matrix-green 
+           px-6 py-3 rounded-lg font-semibold 
+           hover:bg-blue-600 dark:hover:bg-matrix-green 
+           hover:text-white dark:hover:text-dark-bg 
+           transition-all duration-300;
+  }
+  
+  /* Carte geek/moderne */
+  .card-geek {
+    @apply bg-white dark:bg-dark-secondary 
+           border border-gray-200 dark:border-dark-accent 
+           rounded-lg p-6 
+           hover:border-blue-500 dark:hover:border-matrix-green 
+           transition-all duration-300 
+           hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-matrix-green/20;
+  }
+  
+  /* Effet de lueur sur texte (mode dark uniquement) */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  
+  /* Bordure néon (mode dark uniquement) */
+  .neon-border {
+    box-shadow: 0 0 5px #00FF41, 0 0 10px #00FF41;
+  }
+}
+
+/* Animation de particules de code (background) */
+.code-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+/* Transitions fluides pour le changement de thème */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Désactiver la transition sur les éléments spécifiques */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
